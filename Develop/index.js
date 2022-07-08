@@ -42,15 +42,16 @@ const promptUser = () => {
 
 const promptProject = repoData => {
 
-    // If there's no 'project' array property, create one
-    if (!repoData.project) {
-        repoData.project = [];
-    }
     console.log(`
     ==================================
     Add Information About This Project
     ==================================
     `);
+
+    // If there's no 'project' array property, create one
+    if (!repoData.project) {
+        repoData.project = [];
+    }
     return inquirer.prompt([
         {
             type: 'input',
@@ -132,9 +133,16 @@ const promptProject = repoData => {
         },
         {
             type: 'checkbox',
-            name: 'languages',
+            name: 'license',
             message: 'Which lincense is this applicaton covered under?',
-            choices: ['Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder']
+            choices: ['Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder'],
+            validate: licenseInput => {
+                if(licenseInput) {
+                    return true;
+                } else {
+                    console.log('You need to select a license!');
+                }
+            }
         },
     ])
         .then(projectData => {

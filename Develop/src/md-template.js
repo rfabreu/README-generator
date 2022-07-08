@@ -1,6 +1,7 @@
 // create project data template
 module.exports = projectData => {
-const generateProjects = projectData;
+    const { title, licenseBadge, description, install, use, contribution, test, username, email } = projectData;
+
     return `
     # ${title}
     ${licenseBadge}
