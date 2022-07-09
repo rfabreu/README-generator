@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 
-const generateMD = require('./src/md-template');
+const { generateMD } = require('./src/md-template');
 const { writeFile } = require('./utils/generateMarkdown');
 
 
@@ -135,12 +135,13 @@ const promptProject = repoData => {
             type: 'checkbox',
             name: 'license',
             message: 'Which lincense is this applicaton covered under?',
-            choices: ['Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder', 'Placeholder'],
+            choices: ['MIT License', 'GNU General Public License v3.0', 'Apache License 2.0'],
             validate: licenseInput => {
-                if(licenseInput) {
+                if (licenseInput) {
                     return true;
                 } else {
                     console.log('You need to select a license!');
+                    return false;
                 }
             }
         },
