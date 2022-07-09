@@ -50,7 +50,7 @@ const promptProject = repoData => {
 
     // If there's no 'project' array property, create one
     if (!repoData.project) {
-        repoData.project = [];
+        repoData.project = {};
     }
     return inquirer.prompt([
         {
@@ -146,7 +146,7 @@ const promptProject = repoData => {
         },
     ])
         .then(projectData => {
-            repoData.project.push(projectData);
+            repoData.project = projectData;
             return repoData;
         });
 };
@@ -154,6 +154,7 @@ const promptProject = repoData => {
 promptUser()
     .then(promptProject)
     .then(repoData => {
+        console.log(repoData);
         return generateMD(repoData);
     })
     .then(readmeMD => {
