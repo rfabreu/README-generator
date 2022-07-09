@@ -17,24 +17,28 @@ const generateMD = projectData => {
     return `
 # ${title}
 ${licenseBadge}
+## Description
+${description}
+## Table of Contents
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
+- [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
-## Description
-${description}
 ## Installation
 ${install}
 ## Usage
 ${use}
+## License
+This project is licensed under the ${license} license.
 ## Contributing
 ${contribution}
 ## Tests
 ${test}
 ## Questions
-GitHub: [github.com/${username}](https://github.com/${username})
+GitHub: [github.com/${username}](https://github.com/${username}) <br />
 Comments, suggestions, questions? Contact me at: [${email}](mailto:${email})
     `;
 };
